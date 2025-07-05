@@ -69,10 +69,10 @@ Follow these steps to set up the project on your local machine.
 
 First, clone this repository to your local machine and navigate into its directory:
 
-```bash
 git clone [https://github.com/Aatwii/Basicdocker.git](https://github.com/Aatwii/Basicdocker.git)
 cd Basicdocker
-Step 2: Update package.json
+
+### Step 2: Update package.json
 Ensure your package.json includes pg, nodemon, @babel/core, and @babel/node as dependencies. Also, confirm the main entry and start script are correct.
 
 Open package.json and ensure its content matches:
@@ -101,7 +101,7 @@ JSON
     "nodemon": "^3.1.0"
   }
 }
-Step 3: Update src/index.js
+### Step 3: Update src/index.js
 This is your main Node.js application file. It sets up the Express server, connects to PostgreSQL, and defines the API endpoints.
 
 Create a directory named src if it doesn't exist, and inside it, create/update index.js with the following content:
@@ -194,7 +194,7 @@ const HOST = '0.0.0.0'; // Ensure app listens on all network interfaces
 app.listen(port, HOST, () => {
   console.log(`Node.js app listening at http://${HOST}:${port}`);
 });
-Step 4: Create/Update Dockerfile
+### Step 4: Create/Update Dockerfile
 This file instructs Docker on how to build your Node.js application image.
 
 Create/update Dockerfile in the root of your project with the following content:
@@ -288,7 +288,7 @@ services:
 # Define named volumes for data persistence
 volumes:
   db_data: # Declares the 'db_data' named volume
-6. Running the Application
+### 6. Running the Application
 Once all the files are correctly set up, navigate to the root of your Basicdocker directory in your terminal and run:
 
 Bash
@@ -313,7 +313,7 @@ app-1 | Node.js app listening at http://0.0.0.0:3000
 
 The services will run in the foreground. Press Ctrl+C in this terminal to stop them.
 
-7. Testing the API Endpoints
+### 7. Testing the API Endpoints
 Once docker-compose up is running, open a separate terminal window to test your application's API.
 
 Accessing the Root Endpoint
@@ -370,10 +370,10 @@ Bash
 docker-compose down -v
 Use docker-compose down -v with caution, as it permanently deletes your database data.
 
-9. Acknowledgements
+### 9. Acknowledgements
 This project was built upon the foundational structure and initial setup provided by the "Simple Node with Express Server" repository by Robin Wieruch. His work served as an excellent starting point for integrating Docker Compose and PostgreSQL.
 
-10. Troubleshooting Common Issues
+### 10. Troubleshooting Common Issues
 FROM requires either one or three arguments error in Dockerfile:
 
 This is often due to invisible characters or incorrect line endings. Delete your Dockerfile and recreate it cleanly, then copy-paste the content exactly.
