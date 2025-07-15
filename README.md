@@ -1,56 +1,74 @@
-# Basicdocker: Node.js Express App with PostgreSQL using Docker Compose
+Basicdocker: Node.js Express App with PostgreSQL using Docker Compose
+This repository features a straightforward Node.js Express application integrated with a PostgreSQL database, all orchestrated using Docker Compose. It provides a practical, containerized example for setting up a multi-service development environment.
 
-This repository contains a simple Node.js Express application integrated with a PostgreSQL database, all orchestrated using Docker Compose. It serves as a practical example of setting up a multi-service application environment for development.
+Table of Contents
+Project Overview
 
-## Table of Contents
+Features
 
-1.  [Project Overview](#project-overview)
-2.  [Features](#features)
-3.  [Prerequisites](#prerequisites)
-4.  [Project Structure](#project-structure)
-5.  [Setup Instructions (Step-by-Step)](#setup-instructions-step-by-step)
-    * [Step 1: Clone the Repository](#step-1-clone-the-repository)
-    * [Step 2: Update `package.json`](#step-2-update-packagejson)
-    * [Step 3: Update `src/index.js`](#step-3-update-srcindexjs)
-    * [Step 4: Create/Update `Dockerfile`](#step-4-createupdate-dockerfile)
-    * [Step 5: Create/Update `docker-compose.yml`](#step-5-createupdate-docker-composeyml)
-6.  [Running the Application](#running-the-application)
-7.  [Testing the API Endpoints](#testing-the-api-endpoints)
-    * [Accessing the Root Endpoint](#accessing-the-root-endpoint)
-    * [Adding an Item (POST)](#adding-an-item-post)
-    * [Listing All Items (GET)](#listing-all-items-get)
-8.  [Stopping and Cleaning Up](#stopping-and-cleaning-up)
-9.  [Acknowledgements](#acknowledgements)
-10. [Troubleshooting Common Issues](#troubleshooting-common-issues)
+Prerequisites
 
----
+Project Structure
 
-## 1. Project Overview
+Setup Instructions (Step-by-Step)
 
-This project demonstrates how to set up a Node.js Express application that connects to a PostgreSQL database, all containerized and managed by Docker Compose. This allows for a consistent development environment, isolating your application and database from your host system.
+Step 1: Clone the Repository
 
-## 2. Features
+Step 2: Update package.json
 
-* **Node.js Express API:** A simple RESTful API with endpoints for:
-    * `GET /`: Basic status check, returns current database time.
-    * `GET /items`: Retrieves all items from the database.
-    * `POST /items`: Adds a new item to the database.
-* **PostgreSQL Database:** A robust relational database for data storage.
-* **Docker Compose:** Orchestrates the multi-container application, managing networking, environment variables, and data persistence.
-* **Babel & Nodemon:** Configured for development, allowing ES6+ syntax and automatic server restarts on code changes.
-* **Persistent Data:** Database data is persisted using Docker volumes, so your data isn't lost when containers are stopped or recreated.
+Step 3: Update src/index.js
 
-## 3. Prerequisites
+Step 4: Create/Update Dockerfile
 
-Before you begin, ensure you have the following installed on your system:
+Step 5: Create/Update docker-compose.yml
 
-* **Docker Desktop:** Includes Docker Engine and Docker Compose.
-    * [Download Docker Desktop](https://www.docker.com/products/docker-desktop/)
-* **`curl`:** (Optional, but recommended for testing API endpoints from the command line). Usually pre-installed on Linux/macOS.
+Running the Application
 
-## 4. Project Structure
+Testing the API Endpoints
 
-The project directory (`Basicdocker`) should have the following structure after setup:
+Accessing the Root Endpoint
+
+Adding an Item (POST)
+
+Listing All Items (GET)
+
+Stopping and Cleaning Up
+
+Acknowledgements
+
+Troubleshooting Common Issues
+
+1. Project Overview
+This project demonstrates how to set up a Node.js Express application that connects to a PostgreSQL database. Both services are containerized and managed efficiently by Docker Compose, ensuring a consistent and isolated development environment on any host system.
+
+2. Features
+Node.js Express API: A simple RESTful API offering:
+
+GET /: Basic status check, returning the current database time.
+
+GET /items: Retrieves all existing items from the database.
+
+POST /items: Adds a new item to the database.
+
+PostgreSQL Database: A robust, open-source relational database for data storage.
+
+Docker Compose: Orchestrates the multi-container application, handling networking, environment variables, and data persistence seamlessly.
+
+Development Tools: Configured with Babel for ES6+ syntax support and Nodemon for automatic server restarts on code changes.
+
+Persistent Data: Database data is safeguarded using Docker volumes, preventing data loss when containers are stopped or recreated.
+
+3. Prerequisites
+Before you start, make sure you have the following software installed on your system:
+
+Docker Desktop: This package includes both the Docker Engine and Docker Compose.
+
+Download Docker Desktop
+
+curl: (Optional, but highly recommended for testing API endpoints from the command line). It's typically pre-installed on Linux and macOS.
+
+4. Project Structure
+After following the setup instructions, your Basicdocker project directory should look like this:
 
 Basicdocker/
 ├── package.json
@@ -58,24 +76,21 @@ Basicdocker/
 ├── Dockerfile
 ├── docker-compose.yml
 └── src/
-└── index.js
+    └── index.js
+5. Setup Instructions (Step-by-Step)
+Follow these steps to get the project up and running on your local machine.
 
-
-## 5. Setup Instructions (Step-by-Step)
-
-Follow these steps to set up the project on your local machine.
-
-### Step 1: Clone the Repository
-
+Step 1: Clone the Repository
 First, clone this repository to your local machine and navigate into its directory:
 
-git clone [https://github.com/Aatwii/Basicdocker.git](https://github.com/Aatwii/Basicdocker.git)
+Bash
+
+git clone https://github.com/Aatwii/Basicdocker.git
 cd Basicdocker
+Step 2: Update package.json
+Ensure your package.json includes pg, nodemon, @babel/core, and @babel/node as dependencies. Also, confirm the main entry and start script are correctly defined.
 
-### Step 2: Update package.json
-Ensure your package.json includes pg, nodemon, @babel/core, and @babel/node as dependencies. Also, confirm the main entry and start script are correct.
-
-Open package.json and ensure its content matches:
+Open package.json and verify its content matches the following:
 
 JSON
 
@@ -101,7 +116,7 @@ JSON
     "nodemon": "^3.1.0"
   }
 }
-### Step 3: Update src/index.js
+Step 3: Update src/index.js
 This is your main Node.js application file. It sets up the Express server, connects to PostgreSQL, and defines the API endpoints.
 
 Create a directory named src if it doesn't exist, and inside it, create/update index.js with the following content:
@@ -194,8 +209,8 @@ const HOST = '0.0.0.0'; // Ensure app listens on all network interfaces
 app.listen(port, HOST, () => {
   console.log(`Node.js app listening at http://${HOST}:${port}`);
 });
-### Step 4: Create/Update Dockerfile
-This file instructs Docker on how to build your Node.js application image.
+Step 4: Create/Update Dockerfile
+This file provides instructions to Docker on how to build your Node.js application image.
 
 Create/update Dockerfile in the root of your project with the following content:
 
@@ -235,15 +250,15 @@ services:
   # Service for your Node.js application
   app:
     build:
-      context: .       # Tells Docker to look for the Dockerfile in the current directory
+      context: .           # Tells Docker to look for the Dockerfile in the current directory
       dockerfile: Dockerfile # Specifies the name of your Dockerfile
     ports:
-      - "8080:3000"    # Maps port 8080 on your host machine to port 3000 inside the container.
-                       # Your Node.js app listens on 3000. Access via http://localhost:8080
+      - "8080:3000"        # Maps port 8080 on your host machine to port 3000 inside the container.
+                           # Your Node.js app listens on 3000. Access via http://localhost:8080
     environment:
       # Environment variables passed into the 'app' container for DB connection
       DB_USER: user
-      DB_HOST: db             # 'db' refers to the service name of the PostgreSQL container
+      DB_HOST: db          # 'db' refers to the service name of the PostgreSQL container
       DB_NAME: mydatabase
       DB_PASSWORD: password
       DB_PORT: 5432
@@ -288,7 +303,7 @@ services:
 # Define named volumes for data persistence
 volumes:
   db_data: # Declares the 'db_data' named volume
-### 6. Running the Application
+6. Running the Application
 Once all the files are correctly set up, navigate to the root of your Basicdocker directory in your terminal and run:
 
 Bash
@@ -297,30 +312,25 @@ docker-compose down -v # Cleans up any previous containers/volumes (useful for a
 docker-compose up --build # Builds new images and starts all services
 This command will:
 
-docker-compose down -v: Stop and remove any existing containers, networks, and the db_data volume (deleting previous database data).
+docker-compose down -v: Stop and remove any existing containers, networks, and the db_data volume (which deletes previous database data).
 
 docker-compose up --build: Read the docker-compose.yml, build your Node.js application image (using Dockerfile), and then start both the Node.js app and PostgreSQL db services.
 
-You should see logs from both db-1 and app-1 services. Look for messages like:
+You should see logs from both db-1 and app-1 services. Look for messages similar to:
 
 db-1 | database system is ready to accept connections
-
 app-1 | Connected to PostgreSQL database!
-
 app-1 | Table "test_items" checked/created.
-
 app-1 | Node.js app listening at http://0.0.0.0:3000
-
 The services will run in the foreground. Press Ctrl+C in this terminal to stop them.
 
-### 7. Testing the API Endpoints
+7. Testing the API Endpoints
 Once docker-compose up is running, open a separate terminal window to test your application's API.
 
 Accessing the Root Endpoint
 Open your web browser and navigate to:
 
 http://localhost:8080/
-
 You should see a message indicating the app is running and showing the current database time, e.g.: Hello from the Node.js app! Current DB time: [timestamp].
 
 Adding an Item (POST)
@@ -343,6 +353,7 @@ Bash
 
 curl http://localhost:8080/items
 Expected Output:
+
 A JSON array containing all the items you've added:
 
 JSON
@@ -370,20 +381,17 @@ Bash
 docker-compose down -v
 Use docker-compose down -v with caution, as it permanently deletes your database data.
 
-### 9. Acknowledgements
+9. Acknowledgements
 This project was built upon the foundational structure and initial setup provided by the "Simple Node with Express Server" repository by Robin Wieruch. His work served as an excellent starting point for integrating Docker Compose and PostgreSQL.
 
-### 10. Troubleshooting Common Issues
+10. Troubleshooting Common Issues
 FROM requires either one or three arguments error in Dockerfile:
-
 This is often due to invisible characters or incorrect line endings. Delete your Dockerfile and recreate it cleanly, then copy-paste the content exactly.
 
 npm error code EJSONPARSE or Unexpected token ... in JSON:
-
 This means your package.json file contains invalid JSON (e.g., comments like // or /* */). Remove all comments from your package.json and try again.
 
 Cannot find module 'pg' or Cannot find module 'nodemon' etc.:
-
 This indicates that npm install inside the container didn't properly install the dependencies.
 
 Ensure all necessary dependencies are in package.json (including devDependencies for nodemon/babel-node).
@@ -395,7 +403,6 @@ Verify your Dockerfile uses RUN npm install (without --production if you need de
 Check that COPY package.json . and COPY package-lock.json . are before RUN npm install.
 
 localhost:8080 gives an error or "site can't be reached":
-
 HTTPS vs. HTTP: Ensure you are accessing http://localhost:8080/ (note the http://). Your app is not configured for HTTPS by default.
 
 App Crash: Check the app-1 logs in your docker-compose up terminal for errors that might occur after initial startup.
