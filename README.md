@@ -54,7 +54,6 @@ Follow these steps to get the project up and running on your local machine.
 
 First, clone this repository to your local machine and navigate into its directory:
 
-```bash
 git clone [https://github.com/Aatwii/Basicdocker.git](https://github.com/Aatwii/Basicdocker.git)
 cd Basicdocker
 Step 2: Update package.json
@@ -90,8 +89,6 @@ Step 3: Update src/index.js
 This is your main Node.js application file. It sets up the Express server, connects to PostgreSQL, and defines the API endpoints.
 
 Create a directory named src if it doesn't exist, and inside it, create/update index.js with the following content:
-
-JavaScript
 
 // src/index.js
 const express = require('express');
@@ -184,7 +181,6 @@ This file provides instructions to Docker on how to build your Node.js applicati
 
 Create/update Dockerfile in the root of your project with the following content:
 
-Dockerfile
 
 # Dockerfile
 FROM node:18-alpine
@@ -211,7 +207,6 @@ This file defines and orchestrates the app (Node.js) and db (PostgreSQL) service
 
 Create/update docker-compose.yml in the root of your project with the following content:
 
-YAML
 
 # docker-compose.yml
 version: '3.8' # Specifies the Docker Compose file format version
@@ -276,7 +271,6 @@ volumes:
 🏃 Running the Application
 Once all the files are correctly set up, navigate to the root of your Basicdocker directory in your terminal and run:
 
-Bash
 
 docker-compose down -v # Cleans up any previous containers/volumes (useful for a fresh start)
 docker-compose up --build # Builds new images and starts all services
@@ -306,12 +300,12 @@ You should see a message indicating the app is running and showing the current d
 Adding an Item (POST)
 Use curl to send a POST request to add a new item to your database:
 
-Bash
+
 
 curl -X POST -H "Content-Type: application/json" -d '{"name": "My First Docker Item"}' http://localhost:8080/items
 Expected Output:
 
-JSON
+
 
 {"id":1,"name":"My First Docker Item","created_at":"2025-07-05T..."}
 Feel free to run this command multiple times with different names to add more items.
@@ -319,14 +313,14 @@ Feel free to run this command multiple times with different names to add more it
 Listing All Items (GET)
 Use curl to send a GET request to retrieve all items from your database:
 
-Bash
+
 
 curl http://localhost:8080/items
 Expected Output:
 
 A JSON array containing all the items you've added:
 
-JSON
+
 
 [
   {"id":1,"name":"My First Docker Item","created_at":"2025-07-05T..."},
@@ -341,12 +335,12 @@ Press Ctrl+C.
 
 To stop and remove containers and networks (keeping database data for next time):
 
-Bash
+
 
 docker-compose down
 To stop and remove containers, networks, AND the db_data volume (deleting all database data):
 
-Bash
+
 
 docker-compose down -v
 Use docker-compose down -v with caution, as it permanently deletes your database data.
